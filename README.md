@@ -100,3 +100,14 @@ ll (# file2<which is created in cont-6> disply here because cont-5 and cont-6 ar
 ------------------share volume manually from one container to another---------------------------
 docker run -it --name cont-7 -v /vol2 image3 /bin/bash  (# create a volume <vol2> along with container manually)
 docker run -it --name cont-8 --privileged=true --volumes-from cont-7 image3 /bin/bash  (# create a new container <cont-8> && a volume from cont-7)
+
+------------------------------volume share from host to constainer------------------------------------
+
+cd /home/ec2-user
+touch f1 f2 f3  (# create three files in loacal </home/ec2-user>)
+docker run -it --name hostcont -v /home/ec2-user:/hostvolume ubuntu /bin/bash   (# share the volumes from local to container<hostcont>)
+docker volumes ls    (# to list the docker volumes)
+docker volume create volume1    (# create docker volume <volume1>)
+docker volume rm volume1    (# remove the docker volume<volume1>)
+docker volume create volume2
+docker volume prune       (#  This will remove all local volumes not used by at least one container.)
