@@ -3,26 +3,27 @@ take amazon linux ec2 insatnce
 sudo su
 yum install docker -y
 docker --version
-docker version
-systemctl restart docker.service  (or) service docker start
+docker version (give total client information about version)
+systemctl restart docker.service  (or) service docker start  (enable docker eingen service )
 systemctl status docker.service
-docker version
-docker info
+docker version (it will give client and also docker eingen information)
+docker info  (it will give docker instalation total information)
 docker pull ubuntu (# pull the images from dockerhub && by default it will not create container)
 docker images  (# to list images)
-docker run redis (# first check the image from local then pull image from dockerhub && by default it will create container)
+docker run redis (# first check the image from local then pull image from dockerhub && by default it will create container)                                                docker pull ( download image directly from docker hub) && docker run ( first it will check the image is present in the local if not it will download the image from dockerhub && it will create a default container )
 docker images
 docker ps  (# it list only running<up> containers) && (# ps=process status)
 docker ps -a (# it will list all the containers which are running<up> and stoped<exited> )
 docker run alpine
-docker search jenkins (# to search jenkins images)
-docker run -it ubuntu (# to create the container using image && go to container)
-cat /etc/os-release 
+docker search jenkins (# to search jenkins images from local(using docker cli))
+docker run -it ubuntu (# to create a container using image && go to container) && (-it means interactive mode)
+cat /etc/os-release (# display information about ubuntu image because loged into unubtu container)
 exit  (# to exit from the container)
-docker run -it --name mal1 ubuntu (# create a new container(# with new name "mal1") with existing container (ubunutu) )
+docker run -it --name mal1 ubuntu (# create a new container(# with new name "mal1") with existing ubuntu image )
 exit
 docker ps -a
-docker run -it --name mal2 ubuntu /bin/bash  (# create a new container(# with new name "mal1" && new command "/bin/bash") with existing container (ubunutu))
+docker run -it --name mal2 ubuntu /bin/bash  (# create a new container(# with new name "mal1" && new command "/bin/bash") with existing ubuntu image)
+docker run -it --name mal2 ubuntu "touch f1"  (# create a new container(# with new name "mal1" && new command "touch f1") with existing ubuntu image)  ?????
 docker start mal1  (# to start the container && container name=mal1)
 docker attach mal1 (# go to the container && the perticular container must be started )
 exit
